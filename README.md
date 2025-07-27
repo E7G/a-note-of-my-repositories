@@ -116,13 +116,13 @@ ClassBoardSharp 的网页端依赖其提供的 api 来读取本地储存的课�
 
 ### 四代
 
-- https://github.com/E7G/Classpaper-v4
+- [E7G/Classpaper-v4](https://github.com/E7G/Classpaper-v4)：version 4 of my work classpaper , using rust
 
 根据新版的v2使用rust重新实现，使用alcro库作为lorca库的替代实现，编译后体积更小，兼容v2的前端文件，可无缝迁移。
 
 ### 改良后的三代
 
-- https://github.com/E7G/Classpaper-v3
+- [E7G/Classpaper-v3](https://github.com/E7G/Classpaper-v3)：version 3 of my work classpaper , using c++ and webui
 
 通过webui多开窗口实现了网页版设置兼容，设置与主界面相对独立，耦合度更低，兼容v2上的功能，支持更多浏览器，但相对的不兼容v2的前端文件，需要微调，未经完整测试。
 
