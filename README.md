@@ -1,4 +1,4 @@
-# 关于我的仓库的一些分类和补充
+### 关于我的仓库的一些分类和补充
 
 > 也可以作为 **awesome-e7g** 使用
 
@@ -70,7 +70,7 @@ ClassBoardSharp 的网页端依赖其提供的 api 来读取本地储存的课�
 
 ### 二代
 
-- [E7G/Classpaper-v2](https://github.com/E7G/Classpaper-v2)：version 2 of my work Classpaper
+- [E7G/Classpaper-v2](https://github.com/E7G/Classpaper-v2/tree/old)：version 2 of my work Classpaper
 
 在一代失败后，我决定潜心解决网页兼容问题，最终选定 [zserge/lorca](https://github.com/zserge/lorca) 作为 miniblink 的替代，其通过调用系统自带的 chrome 浏览器，实现了网页的兼容，且体积较小，于是我开始使用 go 对 classpaper 进行重新实现。
 
@@ -84,7 +84,7 @@ ClassBoardSharp 的网页端依赖其提供的 api 来读取本地储存的课�
 
 > 遇到问题：浏览器虽然实现了桌面穿透，但是任务栏图标并没有隐藏，导致网页显示端容易被误删。通过查阅资料，我调用 winapi 解决了这一问题，但其容易复发，需要用多线程实现任务栏图标的循环删除，而当时的 c++ 并未找到合适的多线程实现库，于是我需要另想办法。
 
-#### 回头
+### 回头
 
 由于二代采用的 go 语言具有原生多线程支持的优势，于是我使用 cgo 移植了三代中桌面穿透及任务栏图标删除部分的代码，实现了具有完整功能的 classpaper，并最终稳定使用。
 
@@ -93,6 +93,39 @@ ClassBoardSharp 的网页端依赖其提供的 api 来读取本地储存的课�
 - [E7G/lessonlistchanger](https://github.com/E7G/lessonlistchanger)：课表制作/课表转换器
 - [Classpaper-v2/reflash_wallpaperlist.vbs at 2](https://github.com/E7G/Classpaper-v2/blob/2/reflash_wallpaperlist.vbs)：壁纸列表自动刷新脚本
 - [Classpaper-v2/setting.exe at 2](https://github.com/E7G/Classpaper-v2/blob/2/setting.exe)：从一代中提取并完善的适配 classpaper 兼容层的设置程序
+
+### 翻新
+
+应 [Candlest](https://github.com/Candlest) 制作新版 [ClassBoardSharp](https://github.com/Candlest/ClassBoardSharp) 的邀请和个人对功能未完全实现的遗憾的补偿，我对 classpaper 进行了翻新，使其更加完善，拥有更好的设置界面，以及更多的自定义选项。
+
+#### 改良后的classpaper兼容层
+
+在新版的 classpaper 中，我对兼容层进行了改良，把分散的多个配置文件合并为一个 `config.js` 文件，使其看起来不那么凌乱，同时使用内置的js代码对旧的配置格式做了兼容，并保留了可以直接浏览器调试的特性。
+
+> 可读性降低，配置可自定义程度提高。
+
+#### 更改程序配置文件格式
+
+由原来的ini改为toml。
+
+> 使用起来几乎无变化。
+
+### 改良后的classpaper-v2
+
+根据改良后的新前端，我更新了旧的 [E7G/Classpaper-v2](https://github.com/E7G/Classpaper-v2/tree/clean)，并对其进行了一些改进，实现了新的网页版的设置界面，对触摸屏更友好，功能更完善，纯go实现，体积更小，适配win24h2,更多功能请自行体验。
+
+### 四代
+
+- https://github.com/E7G/Classpaper-v4
+
+根据新版的v2使用rust重新实现，使用alcro库作为lorca库的替代实现，编译后体积更小，兼容v2的前端文件，可无缝迁移。
+
+### 改良后的三代
+
+- https://github.com/E7G/Classpaper-v3
+
+通过webui多开窗口实现了网页版设置兼容，设置与主界面相对独立，耦合度更低，兼容v2上的功能，支持更多浏览器，但相对的不兼容v2的前端文件，需要微调，未经完整测试。
+
 
 ---
 
