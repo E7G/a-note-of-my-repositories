@@ -133,7 +133,7 @@ ClassBoardSharp 的网页端依赖其提供的 api 来读取本地储存的课�
 <details>
 <summary>💡 点击切换显示模式（简洁版/美化版）</summary>
 
-<div align="center">
+<div align="left">
 
 ## 🎨 美化版
 
