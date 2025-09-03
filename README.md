@@ -130,7 +130,7 @@ ClassBoardSharp 的网页端依赖其提供的 api 来读取本地储存的课�
 
 - [Classpaper-v5](https://github.com/E7G/Classpaper-v5)：一次对极致性能和空间占用的追求
 
-<details open>
+<details closed>
 <summary>💡 点击切换显示模式（简洁版/美化版）</summary>
 
 <div align="left">
