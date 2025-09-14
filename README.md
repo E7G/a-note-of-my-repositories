@@ -13,7 +13,7 @@
 
 ---
 
-## waterctl_auto 系列
+## waterctl_auto 系列（因固件更新，已失效）
 
 ### 起因
 
