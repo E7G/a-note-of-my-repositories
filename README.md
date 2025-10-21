@@ -232,4 +232,4 @@ CPU:      < 1%
 
 ## 其他
 
-暂无
+- [E7G/wincleaner](https://github.com/E7G/wincleaner)：一个现代化的Windows系统清理工具，基于Rust和Freya GUI库开发。提供直观的图形界面，帮助用户安全地清理系统垃圾文件。支持分类清理（开发工具缓存、应用缓存、系统清理）、自定义清理规则、环境变量支持和安全确认机制。
