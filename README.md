@@ -8,7 +8,7 @@
 
 - [waterctl_auto 系列](#waterctl_auto-系列)
 - [网课助手系列](#网课助手系列)
-- [Classpaper 及其相关系列](#classpaper及其相关系列)
+- [Classpaper 及其相关系列](#Classpaper-及其相关系列)
 - [其他](#其他)
 
 ---
@@ -42,6 +42,7 @@
 
 - [E7G/ocsjs-with-uxy](https://github.com/E7G/ocsjs-with-uxy)：OCS 网课助手，在原脚本基础上加入对优学院自动答题的初步支持（只测试过判断题），此外还对默认设置进行了更改，默认设置了 tikuadapter 为搜题来源，详情请看 readme。
   - 搭配 Tampermonkey 作为网页端支持。
+- [E7G/ocs-helper](https://github.com/E7G/ocs-helper)：超星学习平台自动化辅助脚本，用于功能增强，防止视频卡住及使用页面上的下一节按钮来跳转下一节。支持视频卡顿检测与自动处理、自动课程导航、多级 iframe 支持和可视化控制面板。
 - [E7G/tikulocal](https://github.com/E7G/tikulocal)：一个简易的本地题库程序，为一些脚本提供本地的题库 api 替代。
   - 代替 [NUnzOSz/tikuAdapter](https://github.com/NUnzOSz/tikuAdapter)：大学生网课题库接口适配器：将不同的题库整合为一个 API 接口。
 - 答案导入来自 [E7G/chaoxing_ulearning_Answer_to_Word](https://github.com/E7G/chaoxing_ulearning_Answer_to_Word)：超星优学院答案保存为 word
@@ -233,3 +234,4 @@ CPU:      < 1%
 ## 其他
 
 - [E7G/wincleaner](https://github.com/E7G/wincleaner)：一个现代化的Windows系统清理工具，基于Rust和Freya GUI库开发。提供直观的图形界面，帮助用户安全地清理系统垃圾文件。支持分类清理（开发工具缓存、应用缓存、系统清理）、自定义清理规则、环境变量支持和安全确认机制。
+- [E7G/simpleRPA](https://github.com/E7G/simpleRPA)：一个简单易用的 RPA（机器人流程自动化）框架，基于 Python 开发。提供直观的图形界面，支持可视化创建自动化脚本、录制鼠标键盘操作、图像识别点击、循环执行等功能。
