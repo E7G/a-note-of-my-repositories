@@ -46,6 +46,7 @@
 - [E7G/tikulocal](https://github.com/E7G/tikulocal)：一个简易的本地题库程序，为一些脚本提供本地的题库 api 替代。
   - 代替 [NUnzOSz/tikuAdapter](https://github.com/NUnzOSz/tikuAdapter)：大学生网课题库接口适配器：将不同的题库整合为一个 API 接口。
 - 答案导入来自 [E7G/chaoxing_ulearning_Answer_to_Word](https://github.com/E7G/chaoxing_ulearning_Answer_to_Word)：超星优学院答案保存为 word
+- [E7G/HomeworkInfoSync](https://github.com/E7G/HomeworkInfoSync)：多平台作业信息同步工具，自动获取超星/学习通、课堂派、长江雨课堂的作业信息，统一展示截止时间和提交状态。
 
 形成了完整的工具链。
 
@@ -235,3 +236,6 @@ CPU:      < 1%
 
 - [E7G/wincleaner](https://github.com/E7G/wincleaner)：一个现代化的Windows系统清理工具，基于Rust和Freya GUI库开发。提供直观的图形界面，帮助用户安全地清理系统垃圾文件。支持分类清理（开发工具缓存、应用缓存、系统清理）、自定义清理规则、环境变量支持和安全确认机制。
 - [E7G/simpleRPA](https://github.com/E7G/simpleRPA)：一个简单易用的 RPA（机器人流程自动化）框架，基于 Python 开发。提供直观的图形界面，支持可视化创建自动化脚本、录制鼠标键盘操作、图像识别点击、循环执行等功能。
+- [E7G/classhelper](https://github.com/E7G/classhelper)：基于 Flutter + Sherpa-onnx + LLM 的智能课堂助手应用，支持实时语音识别、智能问答和笔记管理。
+- [E7G/luci-app-campusportal](https://github.com/E7G/luci-app-campusportal)：校园网认证的 LuCI 应用，将校园网认证脚本转换为 OpenWrt LuCI 界面。
+- [E7G/luci-app-adblock-lean](https://github.com/E7G/luci-app-adblock-lean)：adblock-lean 的 LuCI 管理界面，用于在 OpenWrt 路由器上管理广告屏蔽功能。
