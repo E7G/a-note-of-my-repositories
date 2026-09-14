@@ -1,241 +1,319 @@
-### 关于我的仓库的一些分类和补充
+# awesome-e7g / 我的仓库索引
 
-> 也可以作为 **awesome-e7g** 使用
+> 对 [E7G](https://github.com/E7G) 公开仓库的分类、补充说明与项目脉络整理。
+>
+> 这里不追求把所有 fork 和一次性实验全部列出来，而是优先记录目前仍有使用价值、持续维护，或能够代表一段开发路线的项目。
+
+**最近整理：2026-09-14**
 
 ---
 
 ## 目录
 
-- [waterctl_auto 系列](#waterctl_auto-系列)
-- [网课助手系列](#网课助手系列)
-- [Classpaper 及其相关系列](#Classpaper-及其相关系列)
-- [其他](#其他)
+- [目前主要项目](#目前主要项目)
+- [小米平板与 Linux / Droidspaces](#小米平板与-linux--droidspaces)
+- [Android 增强与移动端工具](#android-增强与移动端工具)
+- [课堂、学习与校园工具](#课堂学习与校园工具)
+- [Classpaper 系列](#classpaper-系列)
+- [OpenWrt、网络与 NAS](#openwrt网络与-nas)
+- [Windows / 桌面工具](#windows--桌面工具)
+- [waterctl 系列](#waterctl-系列)
+- [其他项目与实验](#其他项目与实验)
+- [历史说明](#历史说明)
 
 ---
 
-## waterctl_auto 系列（因固件更新，已失效）
+## 目前主要项目
 
-### 起因
+这些是当前最值得优先看的项目。
 
-因为热水器 7 分钟自动断连停热水的问题，我需要每 7 分钟重新操作一次手机，这让我感到十分不爽。由此，我在网上查找到了 waterctl 项目，并基于此项目实现了本系列的作品。
-
-本系列基本上都是基于 [celesWuff/waterctl](https://github.com/celesWuff/waterctl) 修改而产生的仓库 [E7G/waterctl_auto](https://github.com/E7G/waterctl_auto) 的分支的独立衍生作品。按时间先后顺序排列：
-
-- [E7G/Waterctl_Electron](https://github.com/E7G/Waterctl_Electron)：使用 vite-plugin-electron 进行功能增强，可以自动连接指定水控器，自动重连，解决 7 分钟断一次的问题。
-- [E7G/Waterctl_Tauri](https://github.com/E7G/Waterctl_Tauri)：使用 tauri 进行功能增强，可以自动连接指定水控器，自动重连，解决 7 分钟断一次的问题。
-- [E7G/waterctlrn](https://github.com/E7G/waterctlrn)：react native build of waterctl, like waterctlTauri
-
-#### Final：最终方案
-
-- **硬件**：二手红米 3 手机 + 防水手机袋 + microusb 数据线 + 插头
-- **软件**：waterctlrn + macrodroid（执行 sh，实现接入巴法云，从而接入米家）
-
-实现了较稳定的热水供应。
+| 项目 | 方向 | 当前定位 |
+| --- | --- | --- |
+| [E7G/linux_latte](https://github.com/E7G/linux_latte) | 小米平板 2 / Linux 内核 | **重点维护**。基于 Linux 6.14 的 Mi Pad 2（latte）设备支持树，包含显示、触摸、Wi-Fi、蓝牙、音频、USB、传感器、摄像头等设备适配与测试工具。 |
+| [E7G/xiaomi-latte-flash_tools](https://github.com/E7G/xiaomi-latte-flash_tools) | 小米平板 2 / 刷机工具 | 配套 latte Linux 的 GPT、EFI / fastboot 与系统镜像刷写工具。 |
+| [E7G/Droidspaces-rootfs-KDE-builder](https://github.com/E7G/Droidspaces-rootfs-KDE-builder) | Android 上的桌面 Linux | **重点维护**。自动构建 Debian / Ubuntu / Fedora / Arch RootFS，支持 KDE、Plasma Mobile、Anland / Wayland、GPU、中文环境等；同时包含小米平板 4 专用构建路线。 |
+| [E7G/BetterYAMF](https://github.com/E7G/BetterYAMF) | Android 小窗 | 面向性能和体验改良的 reYAMF 分支，重点完善 HyperOS 风格手势、小窗动画、回收机制与稳定性。 |
+| [E7G/classhelper](https://github.com/E7G/classhelper) | AI 课堂助手 | ASR + LLM 课堂助手，正在继续完善语音识别、课程资源、课堂派 / 超星兼容与移动端体验。 |
+| [E7G/winlator](https://github.com/E7G/winlator) | Android 运行 Windows 应用 | Winlator 分支，用于针对实际设备和游戏兼容性进行调整与测试。 |
 
 ---
 
-## 网课助手系列
+## 小米平板与 Linux / Droidspaces
 
-### 起因
+这是目前仓库中最主要的一条开发路线。
 
-为了方便我上网课，由此诞生。
+### 小米平板 2（latte）
 
-- [E7G/ocsjs-with-uxy](https://github.com/E7G/ocsjs-with-uxy)：OCS 网课助手，在原脚本基础上加入对优学院自动答题的初步支持（只测试过判断题），此外还对默认设置进行了更改，默认设置了 tikuadapter 为搜题来源，详情请看 readme。
-  - 搭配 Tampermonkey 作为网页端支持。
-- [E7G/ocs-helper](https://github.com/E7G/ocs-helper)：超星学习平台自动化辅助脚本，用于功能增强，防止视频卡住及使用页面上的下一节按钮来跳转下一节。支持视频卡顿检测与自动处理、自动课程导航、多级 iframe 支持和可视化控制面板。
-- [E7G/tikulocal](https://github.com/E7G/tikulocal)：一个简易的本地题库程序，为一些脚本提供本地的题库 api 替代。
-  - 代替 [NUnzOSz/tikuAdapter](https://github.com/NUnzOSz/tikuAdapter)：大学生网课题库接口适配器：将不同的题库整合为一个 API 接口。
-- 答案导入来自 [E7G/chaoxing_ulearning_Answer_to_Word](https://github.com/E7G/chaoxing_ulearning_Answer_to_Word)：超星优学院答案保存为 word
-- [E7G/HomeworkInfoSync](https://github.com/E7G/HomeworkInfoSync)：多平台作业信息同步工具，自动获取超星/学习通、课堂派、长江雨课堂的作业信息，统一展示截止时间和提交状态。
+#### [E7G/linux_latte](https://github.com/E7G/linux_latte)
 
-形成了完整的工具链。
+Mi Pad 2 的 Linux 设备支持内核，目前以 **Linux 6.14** 为基础。
 
----
+当前仓库已经不再只是一个“能启动”的实验内核，而是逐步向完整设备支持推进，包含：
 
-## Classpaper 及其相关系列
+- Intel i915 显示 / GPU
+- LCD 背光
+- FTSC1000 触摸屏
+- 电容按键
+- BCM4356 Wi-Fi / Bluetooth
+- RT5659 + TFA9890 音频
+- USB Host / Gadget / USB 串口调试
+- 电池与充电
+- IIO 传感器
+- 指示灯与触摸键背光
+- OV5693 前摄与 T4KA3 后摄的 AtomISP 实验支持
+- CherryView VA-API 视频解码相关用户态说明
+- 硬件 smoke test、恢复与辅助包
 
-### 起因
+目前最不成熟的部分仍然是 **AtomISP 摄像头栈**，Suspend / Resume 后的设备恢复也仍需要持续回归测试。
 
-班内引进了 [Candlest/ClassBoard](https://github.com/Candlest/ClassBoard)，其侧栏存在一些 bug，迭代为 [Candlest/ClassBoardSharp](https://github.com/Candlest/ClassBoardSharp) 后，由于其未能正确置为桌面壁纸层，导致遮挡桌面应用图标问题频发，暂未有很好的修补方案，且软件体积膨胀巨大。我决定自制一个软件作为替代，classpaper 系列由此应运而生。
+#### [E7G/xiaomi-latte-flash_tools](https://github.com/E7G/xiaomi-latte-flash_tools)
 
-### 一代
+Mi Pad 2 配套刷写工具，负责 GPT、boot/root 镜像以及 EFI / fastboot 相关流程。
 
-- [E7G/ClassPaper](https://github.com/E7G/ClassPaper)：v1 成品备份
-
-在一代中，我决定复用 ClassBoardSharp 的网页部分代码，采用网页 + 本地软件支持显示的方式实现，使用体积较小的 miniblink + 无需搭建编译环境的易语言实现。
-
-#### classpaper 兼容层
-
-ClassBoardSharp 的网页端依赖其提供的 api 来读取本地储存的课表等文件，但我认为让网页端拥有读取本地文件的能力是一种不安全的行为，且并没有这种必要。于是，我使用单 js 文件储值来替代读取本地文件的功能，并修改 index.html 使其能读取 js 文件中包含的值。对文件内容的修改则改为对 js 内容的修改，由此我制作了一个设置程序，使用户习惯无缝迁徙。这种将文件的文本重定向为单 js 文件存储的值的功能的实现称为 **classpaper 兼容层**。
-
-> 失败：由于 ClassBoardSharp 的网页端使用了 miniblink 并不支持的浏览器新特性，导致网页未能在一代的界面上正确渲染，重写网页端的工程巨大，最后导致失败。
-
-### 二代
-
-- [E7G/Classpaper-v2](https://github.com/E7G/Classpaper-v2/tree/old)：version 2 of my work Classpaper
-
-在一代失败后，我决定潜心解决网页兼容问题，最终选定 [zserge/lorca](https://github.com/zserge/lorca) 作为 miniblink 的替代，其通过调用系统自带的 chrome 浏览器，实现了网页的兼容，且体积较小，于是我开始使用 go 对 classpaper 进行重新实现。
-
-> 再次失败：go 缺乏桌面穿透的库实现，纯 go 无法实现桌面穿透，于是再次失败。
-
-### 三代
-
-- [E7G/Classpaper-v3](https://github.com/E7G/Classpaper-v3)：仿照 v2 的思路使用 c++ 重构
-
-为了解决二代留下的无法实现桌面穿透的问题，我采用了 c++ 对二代进行了重新实现，使用 [webui-dev/webui](https://github.com/webui-dev/webui) 来替代 lorca，二者功能差不多，只要浏览器支持 kiosk 模式等功能就行。
-
-> 遇到问题：浏览器虽然实现了桌面穿透，但是任务栏图标并没有隐藏，导致网页显示端容易被误删。通过查阅资料，我调用 winapi 解决了这一问题，但其容易复发，需要用多线程实现任务栏图标的循环删除，而当时的 c++ 并未找到合适的多线程实现库，于是我需要另想办法。
-
-### 回头
-
-由于二代采用的 go 语言具有原生多线程支持的优势，于是我使用 cgo 移植了三代中桌面穿透及任务栏图标删除部分的代码，实现了具有完整功能的 classpaper，并最终稳定使用。
-
-### 相关工具
-
-- [E7G/lessonlistchanger](https://github.com/E7G/lessonlistchanger)：课表制作/课表转换器
-- [Classpaper-v2/reflash_wallpaperlist.vbs at 2](https://github.com/E7G/Classpaper-v2/blob/2/reflash_wallpaperlist.vbs)：壁纸列表自动刷新脚本
-- [Classpaper-v2/setting.exe at 2](https://github.com/E7G/Classpaper-v2/blob/2/setting.exe)：从一代中提取并完善的适配 classpaper 兼容层的设置程序
-
-### 翻新
-
-应 [Candlest](https://github.com/Candlest) 制作新版 [ClassBoardSharp](https://github.com/Candlest/ClassBoardSharp) 的邀请和个人对功能未完全实现的遗憾的补偿，我对 classpaper 进行了翻新，使其更加完善，拥有更好的设置界面，以及更多的自定义选项。
-
-#### 改良后的classpaper兼容层
-
-在新版的 classpaper 中，我对兼容层进行了改良，把分散的多个配置文件合并为一个 `config.js` 文件，使其看起来不那么凌乱，同时使用内置的js代码对旧的配置格式做了兼容，并保留了可以直接浏览器调试的特性。
-
-> 可读性降低，配置可自定义程度提高。
-
-#### 更改程序配置文件格式
-
-由原来的ini改为toml。
-
-> 使用起来几乎无变化。
-
-### 改良后的classpaper-v2
-
-根据改良后的新前端，我更新了旧的 [E7G/Classpaper-v2](https://github.com/E7G/Classpaper-v2/tree/clean)，并对其进行了一些改进，实现了新的网页版的设置界面，对触摸屏更友好，功能更完善，纯go实现，体积更小，适配win24h2,更多功能请自行体验。
-
-### 四代
-
-- [E7G/Classpaper-v4](https://github.com/E7G/Classpaper-v4)：version 4 of my work classpaper , using rust
-
-根据新版的v2使用rust重新实现，使用alcro库作为lorca库的替代实现，编译后体积更小，兼容v2的前端文件，可无缝迁移。
-
-### 改良后的三代
-
-- [E7G/Classpaper-v3](https://github.com/E7G/Classpaper-v3)：version 3 of my work classpaper , using c++ and webui
-
-通过webui多开窗口实现了网页版设置兼容，设置与主界面相对独立，耦合度更低，兼容v2上的功能，支持更多浏览器，但相对的不兼容v2的前端文件，需要微调，未经完整测试。
-
-### 五代
-
-- [Classpaper-v5](https://github.com/E7G/Classpaper-v5)：一次对极致性能和空间占用的追求
-
-<details closed>
-<summary>💡 点击切换显示模式（简洁版/美化版）</summary>
-
-<div align="left">
-
-## 🎨 美化版
-
-> **极致的终点** - [Classpaper-v5](https://github.com/E7G/Classpaper-v5)
+它和 `linux_latte` 应视为一套完整的设备 Linux 方案，而不是两个孤立项目。
 
 ---
 
-> 一次对极致性能和空间占用的追求
+### 小米平板 4（clover / SDM660）
 
-**反思**
+#### [E7G/Droidspaces-rootfs-KDE-builder](https://github.com/E7G/Droidspaces-rootfs-KDE-builder)
 
-前几代都是作为classboard的后端底层的替代，延续了classboard的一些我认为并不太好的设计，而2、3、4代只是对底层的换语言换方案实现。
+最初是 Droidspaces KDE RootFS 构建项目，现在已经扩展成较完整的 Android Linux 桌面实验平台。
 
-也许，我们并不需要一个硕大的浏览器为我们渲染界面，我们也无需考虑跨平台，而winapi的依赖已然引入，为什么不对其加以更多的利用？
+目前包括：
 
-**理念**
+- Debian 13
+- Ubuntu 24.04 / 25.10 / 26.04
+- Fedora 43 / 44
+- Arch Linux ARM
+- KDE Plasma / Plasma Mobile
+- Termux:X11
+- Anland / Wayland
+- PulseAudio / PipeWire 兼容
+- 中文环境与 Fcitx5
+- Snapdragon GPU / KGSL 相关适配
+- Droidspaces USB 管理
+- GitHub Actions 自动构建与 Release
 
-我需要一个极致的东西：
+其中已经加入 **Mi Pad 4 专用 RootFS** 路线，包括 Ubuntu 26.04 / Arch、Plasma Mobile、Anland、KGSL、legacy ION shim，以及针对旧 4.4 内核环境的兼容处理。
 
-- 不需要其他花里胡哨的我用不到的功能，全都可以忽略掉，去掉
-- 只需要它在那里运作着，默默地提供它的功能，起着它的作用
-- 它无需耀眼，无需宣传，它本身足够好，完成了它应尽的责任
-- 在我们不需要它的时候它也会悄然消失，就像它不曾存在过一样，像风一般逝去，仅此而已
+相关仓库：
 
----
-
-**实现**
-
-> 就这样了，我就这样做了
-
-- **图形渲染**：依赖win自带的gdi实现图形窗口的绘制
-- **零依赖**：完全不依赖其他的库，只使用windows提供的api
-- **极致轻巧**：一个极小的程序
-
-**性能数据**
-
-```
-体积:     40+ KB
-CPU:      < 1%
-内存:     < 1.5 MB
-磁盘写入: 0.1 MB (稳定)
-```
-
-<div align="center">
-
-![Classpaper-v5 实际运行效果](screenshots/v5.png)
-
-*40KB的极致：零依赖、零闪烁、零设置*
-
-</div>
-
-**特性**
-
-- ✨ 无闪烁
-- ⚙️ 无设置
-- 🗂️ 托盘便是控制中心
-- 🔍 查找式实现json的解析
-- 📦 无依赖，实则轻巧
+- [E7G/android_kernel_xiaomi_sdm660_clover_avium](https://github.com/E7G/android_kernel_xiaomi_sdm660_clover_avium)：Mi Pad 4 / SDM660 内核相关实验，当前包含 Droidspaces / ReKSU 方向分支。
+- [E7G/mesa-for-android-container](https://github.com/E7G/mesa-for-android-container)：Android 容器环境中的 Mesa / Snapdragon GPU 相关工作。
+- [E7G/anland](https://github.com/E7G/anland)：Anland 相关实验与修改。
+- [E7G/wlroots-anland](https://github.com/E7G/wlroots-anland)：wlroots + Anland 方向实验。
+- [E7G/labwc](https://github.com/E7G/labwc)：轻量 Wayland compositor 方向实验。
+- [E7G/archlinuxarm-PKGBUILDs](https://github.com/E7G/archlinuxarm-PKGBUILDs)：Arch Linux ARM 软件包构建相关。
+- [E7G/libva-v4l2-stateful](https://github.com/E7G/libva-v4l2-stateful)：V4L2 stateful / VA-API 相关实验。
+- [E7G/avium-build](https://github.com/E7G/avium-build)：Avium / clover 构建相关辅助仓库。
 
 ---
 
-**收官**
+## Android 增强与移动端工具
 
-就这样吧，作为classpaper的收官之作，为其画上了完美的句号。
+### [E7G/BetterYAMF](https://github.com/E7G/BetterYAMF)
 
-实现了其立项以来的我所有的想法：
+基于 reYAMF 的增强分支，目标不是简单增加功能，而是让第三方小窗在实际使用中更接近系统原生体验。
 
-- 极致的轻巧，而不笨拙
-- 优美的界面
-- 极高的可定制性（暂未完成）
+目前主要改动包括：
 
-虽然还不稳定，但正如其classpaper的实际含义：
+- HyperOS 风格上滑进入小窗
+- 跟手动画与边缘 handoff
+- 横屏和非中心手势适配
+- 减少 Overview / Recents 闪屏
+- 被托管应用被杀后自动清理孤立小窗
+- 小窗悬浮球图标与交互恢复
+- 动态监听注册，降低无小窗时的额外开销
 
-> **all about a class，light like a paper, and draw like a paper.**
+### [E7G/winlator](https://github.com/E7G/winlator)
 
-</div>
+Winlator 分支。主要用途是围绕 Android 平板实际运行 Windows x86/x64 程序和游戏进行兼容性、Wine / Proton、Box64 与图形栈测试。
 
-</details>
+### [E7G/c001apk-flutter](https://github.com/E7G/c001apk-flutter)
 
----
+第三方酷安 Flutter 客户端分支，围绕中文界面、动态内容、图片显示和登录等功能继续修补。
 
-<details closed>
-<summary>📄 原始版</summary>
+### 其他 Android 相关
 
-![Classpaper-v5 实际运行效果](screenshots/v5.png)
-
-*40KB的极致：零依赖、零闪烁、零设置*
-
-仔细想想，前几代都是作为classboard的后端底层的替代，延续了classboard的一些我认为并不太好的设计，而2、3、4代只是对底层的换语言换方案实现，也许，我们并不需要一个硕大的浏览器为我们渲染界面，我们也无需考虑跨平台，而winapi的依赖已然引入，为什么不对其加以更多的利用，我需要一个极致的东西，不需要其他花里胡哨的我用不到的功能，全都可以忽略掉，去掉，我只需要它在那里运作着，默默地提供它的功能，起着它的作用，它无需耀眼，无需宣传，它本身足够好，完成了它应尽的责任，在我们不需要它的时候它也会悄然消失，就像它不曾存在过一样，像风一般逝去，仅此而已。
-
-也许吧，就这样了，我就这样做了，它依赖win自带的gdi实现图形窗口的绘制，完全不依赖其他的库，只使用windows提供的api，一个极小的程序，体积只有40多kb，cpu占用不超1%，内存占用不到1.5mb，磁盘写入稳定0.1mb，无闪烁，无设置，托盘便是控制中心，查找式实现json的解析，不稳定，实则极致，无依赖，实则轻巧。就这样吧，作为classpaper的收官之作，为其画上了完美的句号，实现了其立项以来的我所有的想法，极致的轻巧，而不笨拙，优美的界面，极高的可定制性（暂未完成），虽然还不稳定，但正如其classpaper的实际含义，all about a class，light like a paper, and draw like a paper.
-
-</details>
+- [E7G/FakeDCBacklight](https://github.com/E7G/FakeDCBacklight)：屏幕背光 / 类 DC 调光方向实验。
+- [E7G/ScreenshotTile-LSPosed](https://github.com/E7G/ScreenshotTile-LSPosed)：LSPosed / 系统截图快捷功能相关。
+- [E7G/DouyinEasyGo-LSPosed-v1.5.20](https://github.com/E7G/DouyinEasyGo-LSPosed-v1.5.20)：抖音 LSPosed 模块相关分支。
+- [E7G/douyinlowlikefilter](https://github.com/E7G/douyinlowlikefilter)：抖音内容过滤实验。
 
 ---
 
-## 其他
+## 课堂、学习与校园工具
 
-- [E7G/wincleaner](https://github.com/E7G/wincleaner)：一个现代化的Windows系统清理工具，基于Rust和Freya GUI库开发。提供直观的图形界面，帮助用户安全地清理系统垃圾文件。支持分类清理（开发工具缓存、应用缓存、系统清理）、自定义清理规则、环境变量支持和安全确认机制。
-- [E7G/simpleRPA](https://github.com/E7G/simpleRPA)：一个简单易用的 RPA（机器人流程自动化）框架，基于 Python 开发。提供直观的图形界面，支持可视化创建自动化脚本、录制鼠标键盘操作、图像识别点击、循环执行等功能。
-- [E7G/classhelper](https://github.com/E7G/classhelper)：基于 Flutter + Sherpa-onnx + LLM 的智能课堂助手应用，支持实时语音识别、智能问答和笔记管理。
-- [E7G/luci-app-campusportal](https://github.com/E7G/luci-app-campusportal)：校园网认证的 LuCI 应用，将校园网认证脚本转换为 OpenWrt LuCI 界面。
-- [E7G/luci-app-adblock-lean](https://github.com/E7G/luci-app-adblock-lean)：adblock-lean 的 LuCI 管理界面，用于在 OpenWrt 路由器上管理广告屏蔽功能。
+这一系列已经从早期的“网课自动化脚本”逐渐转向 **课程信息聚合 + 课堂辅助 + 本地工具链**。
+
+### [E7G/classhelper](https://github.com/E7G/classhelper)
+
+当前这一方向的主项目。
+
+以 **ASR + LLM** 为核心，实现课堂实时语音识别、内容整理、问答和课程辅助，并继续加入课堂派 / 超星课程资源等功能。
+
+目前持续处理的重点包括：
+
+- 中文实时 ASR
+- 短语音切分和课堂连续识别
+- LLM 辅助理解与笔记
+- 课堂派课程 / 资源浏览
+- 超星资源预览兼容
+- Android 平板高 DPI / 触摸界面适配
+
+### [E7G/HomeworkInfoSync](https://github.com/E7G/HomeworkInfoSync)
+
+多平台作业信息同步工具，目标是统一整理超星 / 学习通、课堂派、长江雨课堂等平台的作业截止时间和提交状态。
+
+### 网课工具链
+
+- [E7G/ocsjs-with-uxy](https://github.com/E7G/ocsjs-with-uxy)：OCS 网课助手分支，曾加入优学院支持及默认题库适配。
+- [E7G/ocs-helper](https://github.com/E7G/ocs-helper)：超星学习平台辅助脚本，处理视频卡顿、自动课程导航、多级 iframe 等问题。
+- [E7G/tikulocal](https://github.com/E7G/tikulocal)：本地题库服务，为脚本提供本地 API。
+- [E7G/chaoxing_ulearning_Answer_to_Word](https://github.com/E7G/chaoxing_ulearning_Answer_to_Word)：将超星 / 优学院答案整理保存到 Word。
+- [E7G/chaoxing-signin](https://github.com/E7G/chaoxing-signin)：超星签到相关工具。
+- [E7G/ketangpai-downloader](https://github.com/E7G/ketangpai-downloader)：课堂派资源整理 / 下载工具。
+
+### 校园环境
+
+- [E7G/luci-app-campusportal](https://github.com/E7G/luci-app-campusportal)：将校园网认证脚本封装为 OpenWrt LuCI 应用。
+- [E7G/cisco-pt-mcp](https://github.com/E7G/cisco-pt-mcp)：Cisco Packet Tracer / MCP 相关实验。
+
+---
+
+## Classpaper 系列
+
+Classpaper 是较完整的一条历史项目路线：从替代 ClassBoard / ClassBoardSharp 开始，先后尝试 miniblink、Lorca、WebUI、Go、C++、Rust，最后走向原生 WinAPI / GDI 的极简实现。
+
+### 一代：[E7G/ClassPaper](https://github.com/E7G/ClassPaper)
+
+最初尝试复用 ClassBoardSharp 网页前端，以 miniblink + 本地程序承载。
+
+这一阶段设计了早期的 **Classpaper 兼容层**：将原本多个本地配置文件的读取，改成由 JS 配置数据提供，从而减少网页端直接读写本地文件。
+
+最终因为网页使用了 miniblink 不支持的新特性，方案停止。
+
+### 二代：[E7G/Classpaper-v2](https://github.com/E7G/Classpaper-v2)
+
+改用 Go + Lorca，借助系统 Chrome 解决网页兼容性问题。
+
+后续通过 cgo 引入 WinAPI，使其拥有桌面层、任务栏图标处理等能力。之后又对前端与配置结构做过翻新，是整个系列中较重要的一代。
+
+### 三代：[E7G/Classpaper-v3](https://github.com/E7G/Classpaper-v3)
+
+使用 C++ + WebUI 重构，解决桌面穿透和浏览器承载问题，并尝试将设置界面与主显示界面解耦。
+
+### 四代：[E7G/Classpaper-v4](https://github.com/E7G/Classpaper-v4)
+
+Rust 实现，继续沿用兼容 v2 前端的路线，目标是进一步压缩体积并改善底层实现。
+
+### 五代：[E7G/Classpaper-v5](https://github.com/E7G/Classpaper-v5)
+
+Classpaper 的收官方向：不再围绕浏览器壳层继续迭代，而是直接使用 Windows API / GDI 完成核心显示。
+
+核心追求：
+
+- 尽量零依赖
+- 极小体积
+- 极低 CPU / 内存占用
+- 无需复杂设置
+- 托盘作为控制入口
+- 回归“它只需要安静地完成自己的工作”这一设计理念
+
+配套工具：
+
+- [E7G/lessonlistchanger](https://github.com/E7G/lessonlistchanger)：课表制作 / 转换工具。
+
+---
+
+## OpenWrt、网络与 NAS
+
+- [E7G/luci-app-campusportal](https://github.com/E7G/luci-app-campusportal)：校园网认证 LuCI 前端。
+- [E7G/luci-app-adblock-lean](https://github.com/E7G/luci-app-adblock-lean)：adblock-lean 的 LuCI 管理界面。
+- [E7G/OpenWrt-momo](https://github.com/E7G/OpenWrt-momo)：OpenWrt momo 相关分支 / 实验。
+- [E7G/OpenWrt-nikki](https://github.com/E7G/OpenWrt-nikki)：OpenWrt Nikki 相关分支 / 实验。
+- [E7G/cliproxyapi-fnos](https://github.com/E7G/cliproxyapi-fnos)：面向飞牛 OS / NAS 的 CLIProxyAPI 集成。
+- [E7G/xiaoai-speaker](https://github.com/E7G/xiaoai-speaker)：小爱音箱相关控制 / TTS 实验。
+
+---
+
+## Windows / 桌面工具
+
+- [E7G/wincleaner](https://github.com/E7G/wincleaner)：Rust + Freya GUI 的 Windows 清理工具，支持开发工具缓存、应用缓存、系统垃圾和自定义规则。
+- [E7G/simpleRPA](https://github.com/E7G/simpleRPA)：Python RPA 自动化框架，包含录制、鼠标键盘操作、图像识别点击和循环执行等能力。
+- [E7G/ShareX-RapidOCR](https://github.com/E7G/ShareX-RapidOCR)：ShareX 与 RapidOCR 结合方向的 OCR 实验。
+- [E7G/MiMoCode-Desktop](https://github.com/E7G/MiMoCode-Desktop)：MiMoCode 桌面端相关项目。
+- [E7G/wmpf-debugger-rust](https://github.com/E7G/wmpf-debugger-rust)：Rust 实现的调试工具实验。
+- [E7G/Quickary](https://github.com/E7G/Quickary)：轻量工具类项目。
+
+---
+
+## waterctl 系列
+
+> **历史项目。** 原方案受水控器固件 / 服务变化影响，已经不再作为当前主线维护。
+
+起因是水控器约 7 分钟断连，需要频繁重新操作。最初基于 [celesWuff/waterctl](https://github.com/celesWuff/waterctl) 做自动连接和自动重连，后来尝试了多个技术栈。
+
+主要仓库：
+
+- [E7G/waterctl_auto](https://github.com/E7G/waterctl_auto)：系列基础分支。
+- [E7G/Waterctl_Electron](https://github.com/E7G/Waterctl_Electron)：Electron 版本。
+- [E7G/Waterctl_Tauri](https://github.com/E7G/Waterctl_Tauri)：Tauri 版本。
+- [E7G/waterctlgo](https://github.com/E7G/waterctlgo)：Go 方向实验。
+- [E7G/waterctlrn](https://github.com/E7G/waterctlrn)：React Native 版本，也是后期实际使用方案的重要组成部分。
+
+当时最终使用过的组合是：
+
+**二手红米 3 + 防水袋 + waterctlrn + MacroDroid + shell + 巴法云 / 米家联动**。
+
+它已经完成了当时的实际需求，因此现在更适合作为一段完整项目历史保留。
+
+---
+
+## 其他项目与实验
+
+这里列出一些值得保留入口，但目前不适合单独发展成大章节的公开仓库。
+
+### 媒体 / 内容
+
+- [E7G/PiliNara](https://github.com/E7G/PiliNara)
+- [E7G/media-kit](https://github.com/E7G/media-kit)
+- [E7G/MKOnlineMusicPlayer](https://github.com/E7G/MKOnlineMusicPlayer)
+- [E7G/kuwo_flac_decrypt](https://github.com/E7G/kuwo_flac_decrypt)
+- [E7G/my-iptv](https://github.com/E7G/my-iptv)
+
+### Web / 开发实验
+
+- [E7G/interactive-image-map](https://github.com/E7G/interactive-image-map)
+- [E7G/appmaker](https://github.com/E7G/appmaker)
+- [E7G/cptr_toolkits](https://github.com/E7G/cptr_toolkits)
+- [E7G/esp32c3-things](https://github.com/E7G/esp32c3-things)
+- [E7G/ts2c](https://github.com/E7G/ts2c)
+- [E7G/pylib](https://github.com/E7G/pylib)
+
+### 历史镜像 / fork / 资料保存
+
+- [E7G/Some-collected-surface-rt-information-files](https://github.com/E7G/Some-collected-surface-rt-information-files)
+- [E7G/Google-Mirrors](https://github.com/E7G/Google-Mirrors)
+- [E7G/pandownload.com_Pages_Backup](https://github.com/E7G/pandownload.com_Pages_Backup)
+- [E7G/pandownload-fake-server](https://github.com/E7G/pandownload-fake-server)
+- [E7G/baidupan-rapidupload](https://github.com/E7G/baidupan-rapidupload)
+- [E7G/baiduwp-php](https://github.com/E7G/baiduwp-php)
+
+---
+
+## 历史说明
+
+这个账号里的仓库跨度较大，大致经历过以下几类方向：
+
+1. **网页、资源站与脚本**：早期的 Web / 网盘 / 镜像类项目。
+2. **Classpaper**：围绕班级桌面信息展示，从 Web 壳层一路做到 WinAPI / GDI。
+3. **waterctl**：为真实生活问题制作的一整套自动化水控方案。
+4. **网课 / 校园自动化**：从 OCS、题库和作业同步逐渐发展到 `classhelper`。
+5. **系统与设备折腾**：OpenWrt、Android、LSPosed、Droidspaces。
+6. **当前重点——旧设备 Linux 化与移动桌面 Linux**：Mi Pad 2 `linux_latte`、Mi Pad 4 / Droidspaces / Anland / Wayland 相关工作。
+
+因此，这个仓库现在更适合作为 **项目地图（project map）**，而不是单纯的仓库列表。
+
+如果某个项目已经有自己的完整 README，这里只保留定位和项目之间的关系，具体安装、构建、已知问题和使用方法以对应仓库为准。
