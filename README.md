@@ -1,33 +1,33 @@
-# E7G / Repository Map
+# E7G / 项目地图
 
-> Repository index for [E7G](https://github.com/E7G).  
-> Projects are grouped by relationship and purpose rather than creation time.
+> [E7G](https://github.com/E7G) 的仓库索引。  
+> 按项目关系与用途整理，不按创建时间堆叠。
 
-`ACTIVE` ongoing work · `WIP` experimental / incomplete · `STABLE` mostly finished · `ARCHIVE` historical / reference
+`ACTIVE` 持续维护 · `WIP` 开发 / 实验中 · `STABLE` 基本完成 · `ARCHIVE` 历史 / 存档
 
-_Last updated: 2026-09-14_
+_最后整理：2026-09-14_
 
 ---
 
-## Map
+## 总览
 
 ```mermaid
 flowchart TD
     ROOT["E7G"]
 
-    ROOT --> DEVICE["Device / Linux"]
+    ROOT --> DEVICE["设备 / Linux"]
     ROOT --> ANDROID["Android"]
-    ROOT --> CAMPUS["Classroom / Campus"]
+    ROOT --> CAMPUS["课堂 / 校园"]
     ROOT --> PAPER["Classpaper"]
-    ROOT --> NET["Network / OpenWrt / NAS"]
-    ROOT --> DESKTOP["Desktop Tools"]
-    ROOT --> ARCHIVE["Archive / Experiments"]
+    ROOT --> NET["网络 / OpenWrt / NAS"]
+    ROOT --> DESKTOP["桌面工具"]
+    ROOT --> ARCHIVE["存档 / 实验"]
 
-    DEVICE --> LATTE["Mi Pad 2 · latte"]
+    DEVICE --> LATTE["小米平板 2 · latte"]
     LATTE --> LINUX["linux_latte"]
     LATTE --> FLASH["xiaomi-latte-flash_tools"]
 
-    DEVICE --> CLOVER["Mi Pad 4 · clover / SDM660"]
+    DEVICE --> CLOVER["小米平板 4 · clover / SDM660"]
     CLOVER --> DROID["Droidspaces-rootfs-KDE-builder"]
     DROID --> KERNEL["android_kernel_xiaomi_sdm660_clover_avium"]
     DROID --> MESA["mesa-for-android-container"]
@@ -36,12 +36,12 @@ flowchart TD
     ANDROID --> YAMF["BetterYAMF"]
     ANDROID --> WINLATOR["winlator"]
     ANDROID --> C001["c001apk-flutter"]
-    ANDROID --> XPOSED["LSPosed / System Tweaks"]
+    ANDROID --> XPOSED["LSPosed / 系统增强"]
 
     CAMPUS --> HELPER["classhelper"]
     CAMPUS --> HOMEWORK["HomeworkInfoSync"]
-    CAMPUS --> OCS["OCS / Chaoxing / Question Bank"]
-    CAMPUS --> PORTAL["Campus Network"]
+    CAMPUS --> OCS["OCS / 超星 / 题库工具链"]
+    CAMPUS --> PORTAL["校园网"]
 
     PAPER --> CP1["v1 · Miniblink"]
     PAPER --> CP2["v2 · Go / Lorca"]
@@ -49,7 +49,7 @@ flowchart TD
     PAPER --> CP4["v4 · Rust"]
     PAPER --> CP5["v5 · WinAPI / GDI"]
 
-    NET --> LUCI["LuCI Apps"]
+    NET --> LUCI["LuCI 应用"]
     NET --> PROXY["OpenWrt-momo / OpenWrt-nikki"]
     NET --> FNOS["fnOS / NAS"]
 
@@ -57,54 +57,54 @@ flowchart TD
     DESKTOP --> RPA["simpleRPA"]
     DESKTOP --> OCR["ShareX-RapidOCR"]
 
-    ARCHIVE --> WATER["waterctl family"]
-    ARCHIVE --> MEDIA["Media / Web / Small Experiments"]
+    ARCHIVE --> WATER["waterctl 系列"]
+    ARCHIVE --> MEDIA["媒体 / Web / 小型实验"]
 ```
 
-### Main routes
+### 主要路线
 
-| Route | Core repositories | Status |
+| 路线 | 核心仓库 | 状态 |
 | --- | --- | --- |
-| Mi Pad 2 Linux | [`linux_latte`](https://github.com/E7G/linux_latte) · [`xiaomi-latte-flash_tools`](https://github.com/E7G/xiaomi-latte-flash_tools) | `ACTIVE` |
-| Mi Pad 4 / Droidspaces | [`Droidspaces-rootfs-KDE-builder`](https://github.com/E7G/Droidspaces-rootfs-KDE-builder) · clover kernel · Mesa / Wayland stack | `ACTIVE` |
-| Android floating window | [`BetterYAMF`](https://github.com/E7G/BetterYAMF) | `ACTIVE` |
-| Classroom assistant | [`classhelper`](https://github.com/E7G/classhelper) | `ACTIVE` |
+| 小米平板 2 Linux | [`linux_latte`](https://github.com/E7G/linux_latte) · [`xiaomi-latte-flash_tools`](https://github.com/E7G/xiaomi-latte-flash_tools) | `ACTIVE` |
+| 小米平板 4 / Droidspaces | [`Droidspaces-rootfs-KDE-builder`](https://github.com/E7G/Droidspaces-rootfs-KDE-builder) · clover 内核 · Mesa / Wayland | `ACTIVE` |
+| Android 小窗 | [`BetterYAMF`](https://github.com/E7G/BetterYAMF) | `ACTIVE` |
+| 课堂助手 | [`classhelper`](https://github.com/E7G/classhelper) | `ACTIVE` |
 | Classpaper | v1 → v5 | `STABLE` |
 | waterctl | Electron / Tauri / Go / React Native | `ARCHIVE` |
 
 ---
 
-## Device / Linux
+## 设备 / Linux
 
-### Mi Pad 2 · latte
+### 小米平板 2 · latte
 
-| Repository | Status | Role |
+| 仓库 | 状态 | 定位 |
 | --- | --- | --- |
-| [`linux_latte`](https://github.com/E7G/linux_latte) | `ACTIVE` | Linux 6.14 device-support kernel tree |
-| [`xiaomi-latte-flash_tools`](https://github.com/E7G/xiaomi-latte-flash_tools) | `WIP` | GPT / EFI / fastboot / image flashing tools |
+| [`linux_latte`](https://github.com/E7G/linux_latte) | `ACTIVE` | 基于 Linux 6.14 的 Mi Pad 2 设备支持内核 |
+| [`xiaomi-latte-flash_tools`](https://github.com/E7G/xiaomi-latte-flash_tools) | `WIP` | GPT / EFI / fastboot / 系统镜像刷写工具 |
 
-`linux_latte` device coverage:
+`linux_latte` 当前覆盖：
 
 ```text
 Mi Pad 2 · latte
-├─ Intel i915 display / GPU
-├─ LCD backlight
-├─ FTSC1000 touchscreen
-├─ capacitive bezel keys
+├─ Intel i915 显示 / GPU
+├─ LCD 背光
+├─ FTSC1000 触摸
+├─ 电容触摸按键
 ├─ BCM4356 Wi-Fi / Bluetooth
-├─ RT5659 + TFA9890 audio
-├─ USB host / gadget / serial debug
-├─ battery / charger
-├─ IIO sensors / LEDs
-├─ OV5693 front camera          [experimental]
-└─ T4KA3 + AtomISP rear camera [experimental]
+├─ RT5659 + TFA9890 音频
+├─ USB Host / Gadget / 串口调试
+├─ 电池 / 充电
+├─ IIO 传感器 / LED
+├─ OV5693 前摄                  [实验]
+└─ T4KA3 + AtomISP 后摄         [实验]
 ```
 
-Camera support and suspend/resume peripheral recovery remain the main regression areas.
+主要回归点：摄像头、Suspend / Resume 后的外设恢复。
 
-### Mi Pad 4 · clover / SDM660
+### 小米平板 4 · clover / SDM660
 
-**Core:** [`Droidspaces-rootfs-KDE-builder`](https://github.com/E7G/Droidspaces-rootfs-KDE-builder) `ACTIVE`
+**核心：** [`Droidspaces-rootfs-KDE-builder`](https://github.com/E7G/Droidspaces-rootfs-KDE-builder) `ACTIVE`
 
 ```text
 Android / Droidspaces
@@ -114,83 +114,83 @@ Android / Droidspaces
         ├─ Termux:X11
         ├─ Anland / Wayland
         ├─ PulseAudio / PipeWire
-        ├─ zh_CN / Fcitx5
+        ├─ 中文环境 / Fcitx5
         └─ Snapdragon KGSL / Mesa
                  │
                  └─ Mi Pad 4 · clover
 ```
 
-| Repository | Role |
+| 仓库 | 定位 |
 | --- | --- |
-| [`android_kernel_xiaomi_sdm660_clover_avium`](https://github.com/E7G/android_kernel_xiaomi_sdm660_clover_avium) | clover / SDM660 kernel, Droidspaces and ReKSU experiments |
-| [`mesa-for-android-container`](https://github.com/E7G/mesa-for-android-container) | Mesa / Snapdragon GPU stack for Android containers |
-| [`anland`](https://github.com/E7G/anland) | Android ↔ Wayland bridge work |
-| [`wlroots-anland`](https://github.com/E7G/wlroots-anland) | wlroots + Anland integration |
-| [`labwc`](https://github.com/E7G/labwc) | lightweight Wayland compositor experiments |
-| [`archlinuxarm-PKGBUILDs`](https://github.com/E7G/archlinuxarm-PKGBUILDs) | Arch Linux ARM package builds |
-| [`libva-v4l2-stateful`](https://github.com/E7G/libva-v4l2-stateful) | V4L2 stateful / VA-API experiments |
-| [`avium-build`](https://github.com/E7G/avium-build) | Avium / clover build helpers |
+| [`android_kernel_xiaomi_sdm660_clover_avium`](https://github.com/E7G/android_kernel_xiaomi_sdm660_clover_avium) | clover / SDM660 内核、Droidspaces、ReKSU 方向 |
+| [`mesa-for-android-container`](https://github.com/E7G/mesa-for-android-container) | Android 容器中的 Mesa / Snapdragon GPU 栈 |
+| [`anland`](https://github.com/E7G/anland) | Android ↔ Wayland 图形桥接 |
+| [`wlroots-anland`](https://github.com/E7G/wlroots-anland) | wlroots + Anland 集成 |
+| [`labwc`](https://github.com/E7G/labwc) | 轻量 Wayland compositor 实验 |
+| [`archlinuxarm-PKGBUILDs`](https://github.com/E7G/archlinuxarm-PKGBUILDs) | Arch Linux ARM 软件包构建 |
+| [`libva-v4l2-stateful`](https://github.com/E7G/libva-v4l2-stateful) | V4L2 stateful / VA-API 实验 |
+| [`avium-build`](https://github.com/E7G/avium-build) | Avium / clover 构建辅助 |
 
 ---
 
 ## Android
 
-| Repository | Status | Focus |
+| 仓库 | 状态 | 方向 |
 | --- | --- | --- |
-| [`BetterYAMF`](https://github.com/E7G/BetterYAMF) | `ACTIVE` | reYAMF fork; HyperOS-style gestures, floating-window interaction, cleanup and stability |
-| [`winlator`](https://github.com/E7G/winlator) | `WIP` | Windows x86/x64 apps and games on Android; Wine / Proton / Box64 / graphics compatibility |
-| [`c001apk-flutter`](https://github.com/E7G/c001apk-flutter) | `WIP` | third-party CoolApk Flutter client; localization, feed, images and login fixes |
-| [`FakeDCBacklight`](https://github.com/E7G/FakeDCBacklight) | `WIP` | backlight / pseudo-DC dimming experiments |
-| [`ScreenshotTile-LSPosed`](https://github.com/E7G/ScreenshotTile-LSPosed) | `WIP` | screenshot quick-tile / LSPosed integration |
-| [`DouyinEasyGo-LSPosed-v1.5.20`](https://github.com/E7G/DouyinEasyGo-LSPosed-v1.5.20) | `WIP` | LSPosed module branch |
-| [`douyinlowlikefilter`](https://github.com/E7G/douyinlowlikefilter) | `WIP` | content-filter experiment |
+| [`BetterYAMF`](https://github.com/E7G/BetterYAMF) | `ACTIVE` | reYAMF 分支；HyperOS 风格手势、小窗交互、回收与稳定性 |
+| [`winlator`](https://github.com/E7G/winlator) | `WIP` | Android 上的 Windows x86/x64 应用与游戏兼容实验 |
+| [`c001apk-flutter`](https://github.com/E7G/c001apk-flutter) | `WIP` | 第三方酷安 Flutter 客户端；汉化、动态、图片、登录 |
+| [`FakeDCBacklight`](https://github.com/E7G/FakeDCBacklight) | `WIP` | 背光 / 类 DC 调光实验 |
+| [`ScreenshotTile-LSPosed`](https://github.com/E7G/ScreenshotTile-LSPosed) | `WIP` | 截图快捷功能 / LSPosed 集成 |
+| [`DouyinEasyGo-LSPosed-v1.5.20`](https://github.com/E7G/DouyinEasyGo-LSPosed-v1.5.20) | `WIP` | LSPosed 模块分支 |
+| [`douyinlowlikefilter`](https://github.com/E7G/douyinlowlikefilter) | `WIP` | 内容过滤实验 |
 
-### BetterYAMF flow
+### BetterYAMF
 
 ```text
-gesture
-  ↓
-real-touch animation
-  ↓
-edge handoff
-  ↓
-floating window
-  ├─ overview / rotation fixes
-  ├─ orphan-window cleanup
-  └─ floating-ball recovery
+手势
+ ↓
+跟手动画
+ ↓
+边缘接管
+ ↓
+小窗
+ ├─ Overview / 旋转修复
+ ├─ 残留窗口清理
+ └─ 悬浮球状态恢复
 ```
 
 ---
 
-## Classroom / Campus
+## 课堂 / 校园
 
 ### classhelper
 
 [`classhelper`](https://github.com/E7G/classhelper) `ACTIVE`
 
 ```text
-microphone
-   │
-   ▼
-  ASR ───────────────→ transcript
-   │                       │
-   │                       ├─ notes / context
-   │                       │
-   └─ continuous class     ▼
-       recognition        LLM
-                           │
-                           └─ QA / assist
+麦克风
+  │
+  ▼
+ ASR ─────────────→ 转写
+  │                  │
+  │                  ├─ 笔记 / 上下文
+  │                  │
+  └─ 连续课堂识别     ▼
+                    LLM
+                     │
+                     └─ 问答 / 辅助
 ```
 
-Related work includes Chaoxing / KETANGPAI course resources, mobile preview, high-DPI UI and continuous classroom ASR.
+关联：课堂派 / 超星课程资源、移动端预览、连续课堂识别与界面适配。
 
-### Course / homework toolchain
+### 课程 / 作业工具链
 
 ```text
 HomeworkInfoSync
-├─ Chaoxing / Xuexitong
-├─ KETANGPAI
-└─ Rain Classroom
+├─ 超星 / 学习通
+├─ 课堂派
+└─ 长江雨课堂
 
 ocsjs-with-uxy
 ├─ ocs-helper
@@ -198,20 +198,20 @@ ocsjs-with-uxy
 └─ chaoxing_ulearning_Answer_to_Word
 ```
 
-| Repository | Role |
+| 仓库 | 定位 |
 | --- | --- |
-| [`HomeworkInfoSync`](https://github.com/E7G/HomeworkInfoSync) | multi-platform homework information sync |
-| [`ocsjs-with-uxy`](https://github.com/E7G/ocsjs-with-uxy) | OCS-derived online-course helper branch |
-| [`ocs-helper`](https://github.com/E7G/ocs-helper) | Chaoxing playback / navigation helper |
-| [`tikulocal`](https://github.com/E7G/tikulocal) | local question-bank API |
-| [`chaoxing_ulearning_Answer_to_Word`](https://github.com/E7G/chaoxing_ulearning_Answer_to_Word) | answer export to Word |
-| [`chaoxing-signin`](https://github.com/E7G/chaoxing-signin) | Chaoxing sign-in related tool |
-| [`ketangpai-downloader`](https://github.com/E7G/ketangpai-downloader) | KETANGPAI resource helper |
+| [`HomeworkInfoSync`](https://github.com/E7G/HomeworkInfoSync) | 多平台作业信息同步 |
+| [`ocsjs-with-uxy`](https://github.com/E7G/ocsjs-with-uxy) | OCS 衍生网课辅助分支 |
+| [`ocs-helper`](https://github.com/E7G/ocs-helper) | 超星播放 / 课程导航辅助 |
+| [`tikulocal`](https://github.com/E7G/tikulocal) | 本地题库 API |
+| [`chaoxing_ulearning_Answer_to_Word`](https://github.com/E7G/chaoxing_ulearning_Answer_to_Word) | 答案导出 Word |
+| [`chaoxing-signin`](https://github.com/E7G/chaoxing-signin) | 超星签到相关工具 |
+| [`ketangpai-downloader`](https://github.com/E7G/ketangpai-downloader) | 课堂派资源工具 |
 
-### Campus network / lab
+### 校园网络 / 实验
 
-- [`luci-app-campusportal`](https://github.com/E7G/luci-app-campusportal) — LuCI frontend for campus portal authentication
-- [`cisco-pt-mcp`](https://github.com/E7G/cisco-pt-mcp) — Cisco Packet Tracer / MCP experiments
+- [`luci-app-campusportal`](https://github.com/E7G/luci-app-campusportal) — 校园网认证 LuCI 前端
+- [`cisco-pt-mcp`](https://github.com/E7G/cisco-pt-mcp) — Cisco Packet Tracer / MCP 实验
 
 ---
 
@@ -225,22 +225,22 @@ flowchart LR
     V4 --> V5["v5\nWinAPI + GDI"]
 ```
 
-| Generation | Repository | Implementation |
+| 版本 | 仓库 | 实现 |
 | --- | --- | --- |
-| v1 | [`ClassPaper`](https://github.com/E7G/ClassPaper) | Miniblink + web frontend; first Classpaper compatibility layer |
-| v2 | [`Classpaper-v2`](https://github.com/E7G/Classpaper-v2) | Go + Lorca; later cgo / WinAPI integration |
-| v3 | [`Classpaper-v3`](https://github.com/E7G/Classpaper-v3) | C++ + WebUI; desktop embedding and click-through |
-| v4 | [`Classpaper-v4`](https://github.com/E7G/Classpaper-v4) | Rust rewrite |
-| v5 | [`Classpaper-v5`](https://github.com/E7G/Classpaper-v5) | WinAPI / GDI; browser layer removed; ~40 KB class implementation |
+| v1 | [`ClassPaper`](https://github.com/E7G/ClassPaper) | Miniblink + Web 前端；Classpaper 兼容层起点 |
+| v2 | [`Classpaper-v2`](https://github.com/E7G/Classpaper-v2) | Go + Lorca；后续加入 cgo / WinAPI |
+| v3 | [`Classpaper-v3`](https://github.com/E7G/Classpaper-v3) | C++ + WebUI；桌面嵌入与穿透 |
+| v4 | [`Classpaper-v4`](https://github.com/E7G/Classpaper-v4) | Rust 重写 |
+| v5 | [`Classpaper-v5`](https://github.com/E7G/Classpaper-v5) | WinAPI / GDI；移除浏览器层，约 40 KB 级实现 |
 
-Companion tool: [`lessonlistchanger`](https://github.com/E7G/lessonlistchanger) — timetable creation / conversion.
+配套工具：[`lessonlistchanger`](https://github.com/E7G/lessonlistchanger) — 课表制作 / 转换。
 
 ---
 
-## Network / OpenWrt / NAS
+## 网络 / OpenWrt / NAS
 
 ```text
-router / nas
+路由器 / NAS
 ├─ luci-app-campusportal
 ├─ luci-app-adblock-lean
 ├─ OpenWrt-momo
@@ -249,31 +249,31 @@ router / nas
 └─ xiaoai-speaker
 ```
 
-| Repository | Role |
+| 仓库 | 定位 |
 | --- | --- |
-| [`luci-app-campusportal`](https://github.com/E7G/luci-app-campusportal) | campus portal LuCI app |
-| [`luci-app-adblock-lean`](https://github.com/E7G/luci-app-adblock-lean) | adblock-lean LuCI frontend |
-| [`OpenWrt-momo`](https://github.com/E7G/OpenWrt-momo) | OpenWrt proxy integration branch |
-| [`OpenWrt-nikki`](https://github.com/E7G/OpenWrt-nikki) | OpenWrt proxy integration branch |
-| [`cliproxyapi-fnos`](https://github.com/E7G/cliproxyapi-fnos) | CLIProxyAPI / fnOS integration |
-| [`xiaoai-speaker`](https://github.com/E7G/xiaoai-speaker) | XiaoAI speaker / TTS experiments |
+| [`luci-app-campusportal`](https://github.com/E7G/luci-app-campusportal) | 校园网认证 LuCI 应用 |
+| [`luci-app-adblock-lean`](https://github.com/E7G/luci-app-adblock-lean) | adblock-lean LuCI 前端 |
+| [`OpenWrt-momo`](https://github.com/E7G/OpenWrt-momo) | OpenWrt 代理集成分支 |
+| [`OpenWrt-nikki`](https://github.com/E7G/OpenWrt-nikki) | OpenWrt 代理集成分支 |
+| [`cliproxyapi-fnos`](https://github.com/E7G/cliproxyapi-fnos) | CLIProxyAPI / fnOS 集成 |
+| [`xiaoai-speaker`](https://github.com/E7G/xiaoai-speaker) | 小爱音箱 / TTS 实验 |
 
 ---
 
-## Desktop Tools
+## 桌面工具
 
-| Repository | Stack / purpose |
+| 仓库 | 技术 / 用途 |
 | --- | --- |
-| [`wincleaner`](https://github.com/E7G/wincleaner) | Rust + Freya Windows cleanup utility |
-| [`simpleRPA`](https://github.com/E7G/simpleRPA) | Python RPA; recording, keyboard/mouse, image click and loops |
-| [`ShareX-RapidOCR`](https://github.com/E7G/ShareX-RapidOCR) | ShareX + RapidOCR integration |
-| [`MiMoCode-Desktop`](https://github.com/E7G/MiMoCode-Desktop) | MiMoCode desktop client |
-| [`wmpf-debugger-rust`](https://github.com/E7G/wmpf-debugger-rust) | Rust debugger experiment |
-| [`Quickary`](https://github.com/E7G/Quickary) | lightweight utility experiment |
+| [`wincleaner`](https://github.com/E7G/wincleaner) | Rust + Freya 的 Windows 清理工具 |
+| [`simpleRPA`](https://github.com/E7G/simpleRPA) | Python RPA；录制、键鼠、图像点击、循环任务 |
+| [`ShareX-RapidOCR`](https://github.com/E7G/ShareX-RapidOCR) | ShareX + RapidOCR |
+| [`MiMoCode-Desktop`](https://github.com/E7G/MiMoCode-Desktop) | MiMoCode 桌面端 |
+| [`wmpf-debugger-rust`](https://github.com/E7G/wmpf-debugger-rust) | Rust 调试工具实验 |
+| [`Quickary`](https://github.com/E7G/Quickary) | 轻量工具实验 |
 
 ---
 
-## waterctl family
+## waterctl 系列
 
 `ARCHIVE`
 
@@ -286,21 +286,21 @@ flowchart LR
     RN --> FINAL["Redmi 3 + MacroDroid + shell + 巴法云 / 米家"]
 ```
 
-| Repository | Implementation |
+| 仓库 | 实现 |
 | --- | --- |
-| [`waterctl_auto`](https://github.com/E7G/waterctl_auto) | original automation branch |
+| [`waterctl_auto`](https://github.com/E7G/waterctl_auto) | 自动化基础分支 |
 | [`Waterctl_Electron`](https://github.com/E7G/Waterctl_Electron) | Electron |
 | [`Waterctl_Tauri`](https://github.com/E7G/Waterctl_Tauri) | Tauri |
 | [`waterctlgo`](https://github.com/E7G/waterctlgo) | Go |
 | [`waterctlrn`](https://github.com/E7G/waterctlrn) | React Native |
 
-Purpose: work around the water-controller disconnect cycle and keep hot-water control automated. The final deployment used a dedicated Redmi 3 with MacroDroid / shell automation. Firmware and service changes eventually retired this route.
+用途：解决水控器周期性断连并保持自动控制。最终部署为 Redmi 3 + MacroDroid / shell 自动化；固件和服务变化后停止维护。
 
 ---
 
-## Archive / Experiments
+## 存档 / 实验
 
-### Media
+### 媒体
 
 - [`PiliNara`](https://github.com/E7G/PiliNara)
 - [`media-kit`](https://github.com/E7G/media-kit)
@@ -308,7 +308,7 @@ Purpose: work around the water-controller disconnect cycle and keep hot-water co
 - [`kuwo_flac_decrypt`](https://github.com/E7G/kuwo_flac_decrypt)
 - [`my-iptv`](https://github.com/E7G/my-iptv)
 
-### Development / Web
+### 开发 / Web
 
 - [`interactive-image-map`](https://github.com/E7G/interactive-image-map)
 - [`appmaker`](https://github.com/E7G/appmaker)
@@ -317,7 +317,7 @@ Purpose: work around the water-controller disconnect cycle and keep hot-water co
 - [`ts2c`](https://github.com/E7G/ts2c)
 - [`pylib`](https://github.com/E7G/pylib)
 
-### Reference / Forks
+### 资料 / Fork / 存档
 
 - [`Some-collected-surface-rt-information-files`](https://github.com/E7G/Some-collected-surface-rt-information-files)
 - [`Google-Mirrors`](https://github.com/E7G/Google-Mirrors)
@@ -328,21 +328,21 @@ Purpose: work around the water-controller disconnect cycle and keep hot-water co
 
 ---
 
-## Timeline
+## 路线演变
 
 ```text
-web / scripts
-      ↓
-Classpaper ──────────────┐
-waterctl                 │
-      ↓                  │
-campus automation        │
-      ↓                  │
-Android / OpenWrt        │
-      ↓                  │
-Droidspaces / Linux      │
-      ↓                  │
-Mi Pad device work  ←────┘
+Web / 脚本
+    ↓
+Classpaper ────────────┐
+waterctl               │
+    ↓                  │
+校园自动化              │
+    ↓                  │
+Android / OpenWrt      │
+    ↓                  │
+Droidspaces / Linux    │
+    ↓                  │
+设备适配 / Mi Pad  ←───┘
 ```
 
-This repository is the map. Project-specific documentation stays with each project.
+这里只画地图，项目细节留在各自仓库中。
